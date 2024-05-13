@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="XiaoN" />
+    <meta name="robots" content="index,follow " />
+    <meta name="description" content="臺灣職業籃球聯賽數據分析網頁" />
+    <title>Taiwan Basketball Professional League</title>
+    <link rel="stylesheet" href="{%static 'style/loginstyle.css' %}" />
+    <link rel="stylesheet" href="{%static 'style/loginstyle.scss' %}" />
+    <!--icon-->
+    <!--link rel="shortcut icon" href="./.png" /-->
+    <!--link rel="bookmark" href="./.png" /-->
+  </head>
+    <!--主要內容-->
+    <main>
+      <h1>Welcome！</h1>
+      <section class="loginform">
+        <form method="post" action="{% url 'login' %}">
+          {% csrf_token %}
+          <table>
+            <tr>
+              <td>{{ form.username.label_tag }}</td>
+              <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+              <td>{{ form.password.label_tag }}</td>
+              <td>{{ form.password }}</td>
+            </tr>
+          </table>
+          <input type="submit" value="login">
+          <input type="hidden" name="next" value="{{ next }}">
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
